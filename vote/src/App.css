@@ -1,0 +1,35 @@
+.App {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #e9f5ff;
+}
+
+.candidate {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin: 10px auto;
+  width: 300px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  transition: transform 0.2s ease;
+}
+
+.candidate:hover {
+  transform: scale(1.03);
+}
+
+button {
+  padding: 10px 15px;
+  margin-top: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #005663;
+}
