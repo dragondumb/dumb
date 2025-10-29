@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leap Year Checker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f9fc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 300px;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    input {
+      padding: 10px;
+      width: 80%;
+      margin-bottom: 15px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    p {
+      font-size: 18px;
+      color: #333;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Leap Year Checker</h1>
+    <input type="number" id="yearInput" placeholder="Enter a year" />
+    <br />
+    <button onclick="checkLeapYear()">Check</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    function checkLeapYear() {
+      const year = parseInt(document.getElementById("yearInput").value);
+      const result = document.getElementById("result");
+
+      if (isNaN(year) || year <= 0) {
+        result.textContent = "Please enter a valid year.";
+        result.style.color = "red";
+        return;
+      }
+
+      // Leap year logic
+      if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+        result.textContent = `${year} is a Leap Year `;
+        result.style.color = "green";
+      } else {
+        result.textContent = `${year} is NOT a Leap Year `;
+        result.style.color = "red";
+      }
+    }
+  </script>
+</body>
+</html>

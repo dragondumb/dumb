@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Simple Chat Module</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .chat-container {
+    width: 350px;
+    height: 500px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .chat-header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .chat-messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+  }
+
+  .message {
+    margin: 8px 0;
+    max-width: 70%;
+    padding: 10px;
+    border-radius: 10px;
+    clear: both;
+  }
+
+  .user-message {
+    background-color: #dcf8c6;
+    float: right;
+    text-align: right;
+  }
+
+  .bot-message {
+    background-color: #ececec;
+    float: left;
+    text-align: left;
+  }
+
+  .chat-input {
+    display: flex;
+    border-top: 1px solid #ccc;
+  }
+
+  .chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+  }
+
+  .chat-input button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+
+  .chat-input button:hover {
+    background-color: #0056b3;
+  }
+</style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">Chat Module</div>
+    <div class="chat-messages" id="chatMessages"></div>
+    <div class="chat-input">
+      <input type="text" id="chatInput" placeholder="Type a message..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    // Send message on button click
+    function sendMessage() {
+      const input = document.getElementById('chatInput');
+      const msg = input.value.trim();
+
+      if (msg === '') return;
+
+      addMessage(msg, 'user');
+      input.value = '';
+
+      // Simulated bot reply
+      setTimeout(() => {
+        addMessage("You said: " + msg, 'bot');
+      }, 500);
+    }
+
+    // Display message in chat window
+    function addMessage(text, type) {
+      const chat = document.getElementById('chatMessages');
+      const msgDiv = document.createElement('div');
+      msgDiv.classList.add('message');
+      msgDiv.classList.add(type === 'user' ? 'user-message' : 'bot-message');
+      msgDiv.innerText = text;
+      chat.appendChild(msgDiv);
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    // Optional: Send message using Enter key
+    document.getElementById('chatInput').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    });
+  </script>
+</body>
+</html>
